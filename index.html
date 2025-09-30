@@ -14,13 +14,27 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+      <!-- Mobile Sidebar & Overlay -->
+      <div class="sidebar-overlay" id="sidebarOverlay"></div>
+      <aside class="mobile-sidebar" id="mobileSidebar">
+        <button class="close-btn" id="sidebarCloseBtn"><i class="ri-close-line"></i></button>
+        <div class="sidebar-menu">
+          <h4><span>Diamonds</span> <i class="ri-arrow-down-s-line arrow"></i></h4>
+          <h4 class="active"><span>Accessories</span> <i class="ri-arrow-down-s-line arrow"></i></h4>
+          <h4><span>Fine Jewelry</span> <i class="ri-arrow-down-s-line arrow"></i></h4>
+          <h4><span>Watches</span> <i class="ri-arrow-down-s-line arrow"></i></h4>
+        </div>
+        <hr class="sidebar-divider" />
+        <div class="sidebar-bottom">
+          <div class="sidebar-row"><i class="ri-question-answer-line"></i> Inquiry</div>
+          <div class="sidebar-row"><i class="ri-user-fill"></i> Feedback</div>
+        </div>
+      </aside>
     <nav>
       <div class="logo">
-        <h1>dimend<span>scaasi</span></h1>
+        <h1>dimend<span>SCAASI</span></h1>
       </div>
-      
       <i class="ri-menu-3-line nav-menu-toggle"></i>
-
       <div class="items">
         <h4>Diamond</h4>
         <h4 id="Accessories">Accessories</h4>
@@ -48,7 +62,7 @@
     <section class="hero">
       <img
         id="ring-left"
-        src="./images1/leftring1.png"
+        src="./IMG/leftring1.webp"
         alt="Ring Left"
         class="ring side left"
         data-title="Hidden Halo"
@@ -56,7 +70,7 @@
       />
       <img
         id="ring-center"
-        src="./images1/central ring copy.png"
+        src="IMG/central ring copy.webp"
         alt="Ring Center"
         class="ring main center"
         data-title="Vintage & Antique"
@@ -64,7 +78,7 @@
       />
       <img
         id="ring-right"
-        src="./images1/rightring1.png"
+        src="./IMG/rightring1.webp"
         alt="Ring Right"
         class="ring side right"
         data-title="Pave"
@@ -106,28 +120,28 @@
       <div class="images">
         <div class="cards">
           <div class="card">
-            <img src="./images1/wedding ring.png" alt="Wedding Ring" />
+            <img src="./IMG/wedding ring.webp" alt="Wedding Ring" />
           </div>
           <h2>Wedding Rings</h2>
           <p>Every diamond in our collection</p>
         </div>
         <div class="cards">
           <div class="card">
-            <img src="./images1/engagement ring.png" alt="Engagement Ring" />
+            <img src="./IMG/engagement ring.webp" alt="Engagement Ring" />
           </div>
           <h2>Engagement Rings</h2>
           <p>Every diamond in our collection</p>
         </div>
         <div class="cards">
           <div class="card">
-            <img src="./images1/fine jewelery.png" alt="Fine Jewelry" />
+            <img src="./IMG/fine jewelery.webp" alt="Fine Jewelry" />
           </div>
           <h2>Fine Jewelery</h2>
           <p>Every diamond in our collection</p>
         </div>
         <div class="cards">
           <div class="card">
-            <img src="./images1/latest rings.png" alt="Latest Rings" />
+            <img src="./IMG/latest rings.webp" alt="Latest Rings" />
           </div>
           <h2>Latest Rings</h2>
           <p>Every diamond in our collection</p>
@@ -145,37 +159,37 @@
       <div class="carousel-container">
         <div class="carousel" id="carousel">
           <div class="carousel-card">
-            <img src="./images1/round diamond.png" alt="Round diamond" />
+            <img src="./IMG/round_diamond2.webp" alt="Round diamond" />
             <div class="label">Round</div>
             <div class="caption">Every diamond in our collection</div>
           </div>
           <div class="carousel-card">
-            <img src="./images1/emarld diamond.png" alt="Emerald diamond" />
+            <img src="./IMG/emarld diamond.webp" alt="Emerald diamond" />
             <div class="label">Emerald</div>
             <div class="caption">Every diamond in our collection</div>
           </div>
           <div class= "carousel-card">
-             <img src="./images1/round_diamond2.png" alt="Round diamond" />
+             <img src="./IMG/round_diamond2.webp" alt="Round diamond" />
             <div class="label">Round</div>
             <div class="caption">Every diamond in our collection</div>
           </div>
           <div class="carousel-card">
-            <img src="./images1/oval diamod.png" alt="Oval diamond" />
+            <img src="./IMG/oval diamod.webp" alt="Oval diamond" />
             <div class="label">Oval</div>
             <div class="caption">Every diamond in our collection</div>
           </div>
           <div class="carousel-card">
-            <img src="./images1/heart diamond.png" alt="Heart diamond" />
+            <img src="./IMG/heart diamond.webp" alt="Heart diamond" />
             <div class="label">Heart</div>
             <div class="caption">Every diamond in our collection</div>
           </div>
           <div class="carousel-card">
-            <img src="./images1/asscher diamond.png" alt="Asscher diamond" />
+            <img src="./IMG/asscher diamond.webp" alt="Asscher diamond" />
             <div class="label">Asscher</div>
             <div class="caption">Every diamond in our collection</div>
           </div>
           <div class="carousel-card">
-            <img src="./images1/heart diamond.png" alt="Heart diamond" />
+            <img src="./IMG/heart diamond.webp" alt="Heart diamond" />
             <div class="label">Heart</div>
             <div class="caption">Every diamond in our collection</div>
           </div>
@@ -204,10 +218,10 @@
       </div>
       <div class="right-section">
         <div class="image-grid">
-          <img src="./images1/diamonds touch 1.png" alt="Rings on hands" />
-          <img src="./images1/diamonds touch 2.png" alt="Diamond bracelet" />
-          <img src="./images1/diamonds touch 3.png" alt="Rings with bow" />
-          <img src="./images1/diamonds touch 4.png" alt="Coffee with hands" />
+          <img src="./IMG/diamonds touch 1 (1).webp" alt="Rings on hands" />
+          <img src="./IMG/diamonds touch 2.webp" alt="Diamond bracelet" />
+          <img src="./IMG/diamonds touch 3.webp" alt="Rings with bow" />
+          <img src="./IMG/diamonds touch 4.webp" alt="Coffee with hands" />
         </div>
       </div>
     </div>
@@ -228,15 +242,15 @@
       </nav>
 
       <div class="logos">
-        <img src="./images1/GIA.png" alt="GIA" />
-        <img src="./images1/JIA.png" alt="JIA" />
-        <img src="./images1/JVC.png" alt="JVC" />
-        <img src="./images1/accred business.png" alt="Accred business" />
-        <img src="./images1/VISA.png" alt="Visa"/> 
-        <img src="./images1/Mastercard.png" alt="mastercard"/>
-        <img src="./images1/Discover.png" alt="discover" />
-        <img src="./images1/Paypal.png" alt="PayPal" />
-        <img src="./images1/American express.png" alt="American Express"/>
+        <img src="./IMG/GIA.webp" alt="GIA" />
+        <img src="./IMG/JIA.webp" alt="JIA" />
+        <img src="./IMG/JVC.webp" alt="JVC" />
+        <img src="./IMG/accred business.webp" alt="Accred business" />
+        <img src="./IMG/VISA.webp" alt="Visa"/> 
+        <img src="./IMG/Mastercard.webp" alt="mastercard"/>
+        <img src="./IMG/Discover.webp" alt="discover" />
+        <img src="./IMG/Paypal.webp" alt="PayPal" />
+        <img src="./IMG/American express.webp" alt="American Express"/>
       </div>
 
       <p class="copy">  
