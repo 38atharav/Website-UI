@@ -252,8 +252,9 @@ nav .icons i:hover {
 }
 
 .code {
-  color: #f56b2a; /* Used brand color for callout */
+  color: #D6D6D6; /* Used brand color for callout */
   font-weight: 500;
+  text-decoration: underline;
 }
 
 /* --- View Details and Socials --- */
