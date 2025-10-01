@@ -156,12 +156,11 @@ nav .icons i:hover {
 .ring {
   position: absolute;
   top: 7px;
-  /* Updated transition for smoother swaps */
   transition: all 0.5s cubic-bezier(0.3, 0.82, 0.59, 1);
   cursor: pointer;
   opacity: 0.92;
   z-index: 2;
-  object-fit: contain; /* Use contain for better image scaling */
+  object-fit: contain; 
 }
 
 .ring.main.center {
@@ -175,12 +174,6 @@ nav .icons i:hover {
 }
 
 .ring.side.left {
-  /* width: 160px; 
-  height: 280px;
-  top: 50%;
-  left: 5%;
-  transform: translateY(-50%);
-  opacity: 1; */
    width: 200px;
   height: 330px;
   top: 300px;
@@ -190,12 +183,6 @@ nav .icons i:hover {
 }
 
 .ring.side.right {
-  /* width: 160px; 
-  height: 280px;
-  top: 50%;
-  left: 75%;
-  transform: translateY(-50%);
-  z-index: 1; */
    width: 200px;
   height: 330px;
   left: 83%;
@@ -203,6 +190,47 @@ nav .icons i:hover {
   z-index: 1;
   top: 50%;
 }
+/* 
+.ring {
+  position: absolute;
+  top: 7px;
+  transition: all 0.5s cubic-bezier(0.3, 0.82, 0.59, 1);
+  cursor: pointer;
+  opacity: 0.92;
+  z-index: 2;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2)); 
+}
+
+
+.ring.main.center {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 25%;
+  max-width: 400px;
+  aspect-ratio: 1/1;
+  z-index: 4;
+  opacity: 1;
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.4));
+}
+
+.ring.side.left {
+  width: 200px;
+  height: 330px;
+  top: 300px;
+  left: -10px;
+  opacity: 0.8; 
+}
+
+.ring.side.right {
+  width: 200px;
+  height: 330px;
+  left: 83%;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.8; 
+} */
 
 .hero-headline-bg {
   position: absolute;
