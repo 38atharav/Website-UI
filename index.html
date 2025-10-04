@@ -14,27 +14,40 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-      <!-- Mobile Sidebar & Overlay -->
-      <div class="sidebar-overlay" id="sidebarOverlay"></div>
-      <aside class="mobile-sidebar" id="mobileSidebar">
-        <button class="close-btn" id="sidebarCloseBtn"><i class="ri-close-line"></i></button>
-        <div class="sidebar-menu">
-          <h4><span>Diamonds</span> <i class="ri-arrow-down-s-line arrow"></i></h4>
-          <h4 class="active"><span>Accessories</span> <i class="ri-arrow-down-s-line arrow"></i></h4>
-          <h4><span>Fine Jewelry</span> <i class="ri-arrow-down-s-line arrow"></i></h4>
-          <h4><span>Watches</span> <i class="ri-arrow-down-s-line arrow"></i></h4>
+    <!-- Mobile Sidebar & Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="mobile-sidebar" id="mobileSidebar">
+      <button class="close-btn" id="sidebarCloseBtn">
+        <i class="ri-close-line"></i>
+      </button>
+      <div class="sidebar-menu">
+        <h4>
+          <span>Diamonds</span> <i class="ri-arrow-down-s-line arrow"></i>
+        </h4>
+        <h4 class="active">
+          <span>Accessories</span> <i class="ri-arrow-down-s-line arrow"></i>
+        </h4>
+        <h4>
+          <span>Fine Jewelry</span> <i class="ri-arrow-down-s-line arrow"></i>
+        </h4>
+        <h4><span>Watches</span> <i class="ri-arrow-down-s-line arrow"></i></h4>
+      </div>
+      <hr class="sidebar-divider" />
+      <div class="sidebar-bottom">
+        <div class="sidebar-row">
+          <i class="ri-question-answer-line"></i> Inquiry
         </div>
-        <hr class="sidebar-divider" />
-        <div class="sidebar-bottom">
-          <div class="sidebar-row"><i class="ri-question-answer-line"></i> Inquiry</div>
-          <div class="sidebar-row"><i class="ri-user-fill"></i> Feedback</div>
-        </div>
-      </aside>
+        <div class="sidebar-row"><i class="ri-user-fill"></i> Feedback</div>
+      </div>
+    </aside>
+
     <nav>
+      <!-- <i class="ri-menu-3-line nav-menu-toggle"></i> -->
+      <i class="ri-menu-line nav-menu-toggle"></i>
       <div class="logo">
         <h1>dimend<span>SCAASI</span></h1>
       </div>
-      <i class="ri-menu-3-line nav-menu-toggle"></i>
+
       <div class="items">
         <h4>Diamond</h4>
         <h4 id="Accessories">Accessories</h4>
@@ -43,11 +56,11 @@
       </div>
       <div class="icons">
         <div><i class="ri-search-line"></i></div>
-        <div><i class="ri-heart-3-line"></i></div>
+        <div class="heart"><i class="ri-heart-3-line"></i></div>
         <div><i class="ri-user-line"></i></div>
       </div>
     </nav>
-    
+
     <div class="navBottom">
       <div>
         <i class="ri-question-answer-line"></i>
@@ -70,7 +83,7 @@
       />
       <img
         id="ring-center"
-        src="/IMG/Newcentralring.webp"
+        src="./IMG/Newcentralring.webp"
         alt="Ring Center"
         class="ring main center"
         data-title="Vintage & Antique"
@@ -113,9 +126,8 @@
     <section class="collection">
       <h2>Our Collection</h2>
       <p>
-        Discover our elegant and unique fine jewelry collections,
-        ranging from diamond studs to stylish pendants 
-        and dazzling bracelets.
+        Discover our elegant and unique fine jewelry collections, ranging from
+        diamond studs to stylish pendants and dazzling bracelets.
       </p>
       <div class="images">
         <div class="cards">
@@ -152,8 +164,8 @@
     <div class="diamond-section">
       <h2>Explore Loose Diamonds</h2>
       <p class="diamond-subtitle">
-        Every diamond in our collection is selected for ,<br> its superior cut,
-        symmetry, and shape.
+        Every diamond in our collection is selected for ,<br />
+        its superior cut, symmetry, and shape.
       </p>
 
       <div class="carousel-container">
@@ -168,8 +180,8 @@
             <div class="label">Emerald</div>
             <div class="caption">Every diamond in our collection</div>
           </div>
-          <div class= "carousel-card">
-             <img src="./IMG/round_diamond2.webp" alt="Round diamond" />
+          <div class="carousel-card">
+            <img src="./IMG/round_diamond2.webp" alt="Round diamond" />
             <div class="label">Round</div>
             <div class="caption">Every diamond in our collection</div>
           </div>
@@ -194,18 +206,16 @@
             <div class="caption">Every diamond in our collection</div>
           </div>
         </div>
-        <div class="dots" id="dots">
-          </div>
-      </div>             
+        <div class="dots" id="dots"></div>
+      </div>
     </div>
 
     <div class="container">
-      <div class="left-section">    
+      <div class="left-section">
         <h2>Keep In Touch</h2>
         <p class="subtitle">
-          Our lab created diamonds are the <br />
-          eco-conscious choice, and exhibit <br />
-          the same sparkle as natural diamonds.
+          Our lab created diamonds are the eco-conscious choice, and exhibit the
+          same sparkle as natural diamonds.
         </p>
         <form class="contact-form">
           <input
@@ -224,6 +234,14 @@
           <img src="./IMG/diamonds touch 4.webp" alt="Coffee with hands" />
         </div>
       </div>
+      <form class="mobile-contact-form contact-form">
+          <input
+            type="email"
+            placeholder="Enter your email Id to subscribe"
+            required
+          />
+          <button type="submit">Sign Up</button>
+        </form>
     </div>
 
     <footer class="footer">
@@ -234,29 +252,29 @@
         an emphasis on great style and exceptional quality.
       </p>
 
-      <nav>
+      <div class="nav">
         <a href="#">Education</a>
         <a href="#">About Us</a>
         <a href="#">Customer Care</a>
         <a href="#">Contact Us</a>
-      </nav>
+      </div>
 
       <div class="logos">
         <img src="./IMG/GIA.webp" alt="GIA" />
         <img src="./IMG/JIA.webp" alt="JIA" />
         <img src="./IMG/JVC.webp" alt="JVC" />
         <img src="./IMG/accred business.webp" alt="Accred business" />
-        <img src="./IMG/VISA.webp" alt="Visa"/> 
-        <img src="./IMG/Mastercard.webp" alt="mastercard"/>
+        <img src="./IMG/VISA.webp" alt="Visa" />
+        <img src="./IMG/Mastercard.webp" alt="mastercard" />
         <img src="./IMG/Discover.webp" alt="discover" />
         <img src="./IMG/Paypal.webp" alt="PayPal" />
-        <img src="./IMG/American express.webp" alt="American Express"/>
+        <img src="./IMG/American express.webp" alt="American Express" />
       </div>
 
-      <p class="copy">  
-        dimendSCAASI™ and InnerViews® are Registered Trademarks of dimend SCAASI
-        Ltd. © 2010-2020 dimend SCAASI Ltd. Terms of Use | Sitemap | Privacy
-        Policy
+      <p class="copy">
+          dimendSCAASI™ and InnerViews® are Registered Trademarks of dimend
+        SCAASI Ltd. © 2010-2020 dimend SCAASI Ltd. Terms of Use | Sitemap |
+        Privacy Policy
       </p>
     </footer>
 

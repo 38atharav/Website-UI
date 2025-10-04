@@ -54,9 +54,9 @@ function updateCarousel() {
     
     // Get the calculated style for 'min-width' and 'gap'
     const style = window.getComputedStyle(firstCard);
-    const cardWidth = parseFloat(style.minWidth); // 160px from CSS (desktop)
+    const cardWidth = parseFloat(style.minWidth); 
     const carouselStyle = window.getComputedStyle(carousel);
-    const gap = parseFloat(carouselStyle.gap); // 24px from CSS (desktop)
+    const gap = parseFloat(carouselStyle.gap); 
     const totalCardWidth = cardWidth + gap;
 
     // Ensure currentIndex is within bounds
@@ -102,7 +102,7 @@ window.addEventListener('resize', () => {
 
 // Initial load
 document.addEventListener('DOMContentLoaded', () => {
-    updateCarousel(); // Calls updateDots internally
+    updateCarousel(); 
 });
 
 // Hero Ring Swap Logic
@@ -134,7 +134,7 @@ function swapRings(idx) {
     const centerRing = rings.find(r => r.elem.classList.contains('center'));
     const clickedRing = rings[idx];
     
-    if (clickedRing === centerRing) return; // Don't swap on center click
+    if (clickedRing === centerRing) return; 
 
     // Determine the position of the center ring (0 or 2)
     const centerIndex = rings.indexOf(centerRing);
@@ -162,9 +162,6 @@ function swapRings(idx) {
 
 rings[0].getEl().onclick = () => swapRings(0);
 rings[2].getEl().onclick = () => swapRings(2);
-// The center ring should be rings[1] *after* the initial DOM structure, 
-// so this should be rings[1].getEl().onclick = () => {}; 
-// but it is safer to find the one with the center class
 document.getElementById('ring-center').onclick = () => {}; 
 
 updateDetails();
