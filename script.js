@@ -34,6 +34,8 @@ const carousel = document.getElementById('carousel');
 let currentIndex = 0;
 
 // Function to calculate the number of cards visible based on screen width
+// **NOTE:** This function is now only used for the desktop maxIndex calculation. 
+// Mobile view will slide by 1.
 function getCardsPerView() {
     const screenWidth = window.innerWidth;
     if (screenWidth > 992) {
@@ -43,48 +45,98 @@ function getCardsPerView() {
     } else if (screenWidth > 400) {
         return 3;
     } else {
-        return 2;
+        // We'll treat this as 1 card per view for sliding, 
+        // but the CSS will visually show 3 cards.
+        return 1; 
     }
 }
 
 function updateCarousel() {
-    // Get the actual width of a card (including margin/gap)
+    if (!carousel || carousel.children.length === 0) return;
+
     const firstCard = carousel.children[0];
-    if (!firstCard) return;
+    const totalCards = carousel.children.length;
     
-    // Get the calculated style for 'min-width' and 'gap'
-    const style = window.getComputedStyle(firstCard);
-    const cardWidth = parseFloat(style.minWidth); 
+    // Use offsetWidth for reliable card width
+    const cardWidth = firstCard.offsetWidth; 
     const carouselStyle = window.getComputedStyle(carousel);
-    const gap = parseFloat(carouselStyle.gap); 
+    const gap = parseFloat(carouselStyle.gap) || 0; 
+    
+    // Crucial: Total distance to slide is the width of ONE card plus the gap.
     const totalCardWidth = cardWidth + gap;
 
-    // Ensure currentIndex is within bounds
-    const totalCards = carousel.children.length;
     const cardsPerView = getCardsPerView();
-    const maxIndex = Math.max(0, totalCards - cardsPerView);
+    let maxIndex;
+
+    if (window.innerWidth <= 660) {
+        // Mobile/Focused View: Max index is total cards minus 1 (slide by 1)
+        maxIndex = Math.max(0, totalCards - 1);
+        // Enforce the 3-dot (maxIndex 2) limit for mobile
+        maxIndex = Math.min(maxIndex, 2); 
+    } else {
+        // Desktop View: Max index is total cards minus cardsPerView (slide by group)
+        maxIndex = Math.max(0, totalCards - cardsPerView);
+    }
+
+    // Ensure currentIndex doesn't exceed the new maxIndex
     currentIndex = Math.min(currentIndex, maxIndex);
 
-    carousel.style.transform = `translateX(-${currentIndex * totalCardWidth}px)`;
+    // Calculate the centering offset for mobile view (if needed)
+    let centerOffset = 0;
+    if (window.innerWidth <= 660) {
+        // To visually center the first card, we need to translate by 
+        // half the container width minus half the card width.
+        // Given the new CSS, we use a fixed offset based on the container padding/margin.
+        // A rough estimate to center is 50% of the container width minus 50% of the card width.
+        const containerWidth = carousel.parentElement.offsetWidth;
+        centerOffset = (containerWidth / 2) - (cardWidth / 2) - gap; 
+    }
     
-    // Update dots after carousel moves
+    // Apply the translation
+    // In mobile, we subtract the centerOffset to align the first card
+    const translateX = window.innerWidth <= 660 
+        ? (currentIndex * totalCardWidth) - centerOffset
+        : currentIndex * totalCardWidth;
+
+
+    carousel.style.transform = `translateX(-${translateX}px)`;
+    
+    // --- NEW: Update the center card class ---
+    Array.from(carousel.children).forEach(card => card.classList.remove('center-card'));
+
+    // Add class to the new center card
+    if (carousel.children[currentIndex]) {
+        carousel.children[currentIndex].classList.add('center-card');
+    }
+    
     updateDots();
 }
 
 // Responsive dots: calculate dot count dynamically
 function updateDots() {
+    if (!carousel) return;
     const totalCards = carousel.children.length;
-    const cardsPerView = getCardsPerView();
-    const dotCount = Math.max(1, totalCards - cardsPerView + 1);
-    const dotsContainer = document.getElementById('dots');
+    let cardsPerView = getCardsPerView();
+    let dotsContainer = document.getElementById('dots');
     
-    // Clear existing dots
+    let dotCount;
+
+    if (window.innerWidth <= 660) {
+        // Mobile: Dot count must be capped at 3
+        dotCount = Math.min(totalCards, 3);
+        // Note: The click events will still be limited by the maxIndex=2
+    } else {
+        // Desktop: Base number of slides available
+        dotCount = Math.max(1, totalCards - cardsPerView + 1); 
+    }
+
+    if (!dotsContainer) return;
     dotsContainer.innerHTML = '';
     
     for (let i = 0; i < dotCount; i++) {
         const dotEl = document.createElement('span');
         dotEl.classList.add('dot');
-        if (i === currentIndex) dotEl.classList.add('active');
+        if (i === currentIndex) dotEl.classList.add('active'); 
         
         dotEl.addEventListener('click', () => {
             currentIndex = i;
@@ -95,7 +147,6 @@ function updateDots() {
 }
 
 window.addEventListener('resize', () => {
-    // Reset index to 0 on resize to prevent being stuck out of view
     currentIndex = 0; 
     updateCarousel();
 });
@@ -149,12 +200,10 @@ function swapRings(idx) {
     if (clickedRing.elem.classList.contains('left')) {
         centerRing.elem.classList.add('side', 'left');
         clickedRing.elem.classList.remove('side', 'left');
-    } else { // must be right
+    } else { 
         centerRing.elem.classList.add('side', 'right');
         clickedRing.elem.classList.remove('side', 'right');
     }
-    
-    // Swap the elements in the rings array *references*
     [rings[centerIndex], rings[clickedIndex]] = [rings[clickedIndex], rings[centerIndex]];
     
     updateDetails();
