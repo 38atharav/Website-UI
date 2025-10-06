@@ -33,8 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
 const carousel = document.getElementById('carousel');
 let currentIndex = 0;
 
-// Function to calculate the number of cards visible based on screen width
-// **NOTE:** This function is now only used for the desktop maxIndex calculation. 
 // Mobile view will slide by 1.
 function getCardsPerView() {
     const screenWidth = window.innerWidth;
@@ -45,8 +43,6 @@ function getCardsPerView() {
     } else if (screenWidth > 400) {
         return 3;
     } else {
-        // We'll treat this as 1 card per view for sliding, 
-        // but the CSS will visually show 3 cards.
         return 1; 
     }
 }
@@ -84,16 +80,11 @@ function updateCarousel() {
     // Calculate the centering offset for mobile view (if needed)
     let centerOffset = 0;
     if (window.innerWidth <= 660) {
-        // To visually center the first card, we need to translate by 
-        // half the container width minus half the card width.
-        // Given the new CSS, we use a fixed offset based on the container padding/margin.
-        // A rough estimate to center is 50% of the container width minus 50% of the card width.
         const containerWidth = carousel.parentElement.offsetWidth;
         centerOffset = (containerWidth / 2) - (cardWidth / 2) - gap; 
     }
     
     // Apply the translation
-    // In mobile, we subtract the centerOffset to align the first card
     const translateX = window.innerWidth <= 660 
         ? (currentIndex * totalCardWidth) - centerOffset
         : currentIndex * totalCardWidth;
@@ -101,7 +92,6 @@ function updateCarousel() {
 
     carousel.style.transform = `translateX(-${translateX}px)`;
     
-    // --- NEW: Update the center card class ---
     Array.from(carousel.children).forEach(card => card.classList.remove('center-card'));
 
     // Add class to the new center card
@@ -122,15 +112,15 @@ function updateDots() {
     let dotCount;
 
     if (window.innerWidth <= 660) {
-        // Mobile: Dot count must be capped at 3
         dotCount = Math.min(totalCards, 3);
-        // Note: The click events will still be limited by the maxIndex=2
     } else {
         // Desktop: Base number of slides available
         dotCount = Math.max(1, totalCards - cardsPerView + 1); 
     }
 
     if (!dotsContainer) return;
+    
+    // Clear existing dots
     dotsContainer.innerHTML = '';
     
     for (let i = 0; i < dotCount; i++) {
@@ -186,11 +176,8 @@ function swapRings(idx) {
     const clickedRing = rings[idx];
     
     if (clickedRing === centerRing) return; 
-
-    // Determine the position of the center ring (0 or 2)
     const centerIndex = rings.indexOf(centerRing);
     
-    // Determine the position of the clicked ring
     const clickedIndex = rings.indexOf(clickedRing);
 
     // Swap position-based classes
@@ -204,6 +191,8 @@ function swapRings(idx) {
         centerRing.elem.classList.add('side', 'right');
         clickedRing.elem.classList.remove('side', 'right');
     }
+    
+
     [rings[centerIndex], rings[clickedIndex]] = [rings[clickedIndex], rings[centerIndex]];
     
     updateDetails();
